@@ -1,365 +1,114 @@
-/* Подключение шрифтов */
-@font-face {
-	font-family: 'Lato';
-	src: url('../fonts/Lato-Regular.woff2') format('woff2');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Lato';
-	src: url('../fonts/Lato-Bold.woff2') format('woff2');
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Rufina';
-	src: url('../fonts/Rufina-Regular.woff2') format('woff2');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Rufina';
-	src: url('../fonts/Rufina-Bold.woff2') format('woff2');
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Inter';
-	src: url('../fonts/Inter24pt-Regular.woff2') format('woff2');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
+/* Основные стили */
 body {
-    font-family: 'Rufina', sans-serif;
-    color: black;
-}
-
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-}
-
-.content {
-    position: relative;
-    z-index: 0;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(90deg, #f3edef,#ecd0e0);                                      
-}
-
-.container {
-    max-width: 1440px;
-    margin-inline: auto;
-    height: 100%;
-}
-
-.main-flex-center {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffecec 100%);
+    color: #5a3e36;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    row-gap: 100px;
-}
-
-.content-title {
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-}
-
-.content-list {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    column-gap: 30px;
-}
-
-.content-item {
-    width: 100px;
-    height: 150px;
-    padding: 5px;
-    background: linear-gradient(180deg, #5f6bc7,#5cc1c0,#eef9f9);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-}
-
-.content-item > :not(:first-child) {
-    margin-top: 4px;
-}
-
-.hidden-text-big {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: black;
-    opacity: 0;
-    border-radius: 10px;
-    transition: .5s;
-}
-
-.hidden-text-medium {
-    display: block;
-    width: 70%;
-    height: 3px;
-    background-color: black;
-    opacity: 0;
-    border-radius: 10px;
-    transition: .5s;
-}
-
-.hidden-text-short {
-    display: block;
-    width: 40%;
-    height: 3px;
-    background-color: black;
-    opacity: 0;
-    border-radius: 10px;
-    transition: .5s;
-}
-
-.hidden-text-very-short {
-    display: block;
-    width: 15%;
-    height: 3px;
-    background-color: black;
-    opacity: 0;
-    border-radius: 10px;
-    transition: .5s;
-}
-
-
-
-.content-list {
-    transform-style: preserve-3d;
-    transform: perspective(1000px);
-}
-
-.content-list .content-item {
-    position: relative;
-    transition: .5s;
-}
-
-.content-list .content-item::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30px; /* Размер SVG иконки */
-    height: 30px;
-    background: url('../img/circle-question-svgrepo-com.svg') no-repeat center center;
-    background-size: contain;
-    z-index: 1; /* Обеспечивает, что иконка будет поверх */
-    transition: .5s;
-}
-
-.content-list .content-item::after {
-    content: 'Click...';
-    position: absolute;
-    left: 0;
-    bottom: -50px;
-    font-size: 18px;
-    color: black;
-    font-weight: 700;
-    transition: .5s;
-    z-index: 1;
-    opacity: 0;
-}
-
-.content-list .content-item:hover {
-    cursor: pointer;
-    background: white;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
-    transform: translateZ(100px);
-}
-
-.content-list .content-item:hover::before {
-    opacity: 0;
-}
-
-.content-list .content-item:hover::after {
-    opacity: 1;
-}
-
-.content-list .content-item:hover .hidden-text-big,
-.content-list .content-item:hover .hidden-text-medium,
-.content-list .content-item:hover .hidden-text-short,
-.content-list .content-item:hover .hidden-text-very-short {
-    opacity: 1;
-}
-
-.content-list .content-item:hover + * {
-    filter: brightness(0.6);
-    transform: translateZ(70px) rotateY(40deg);
-}
-
-.content-list .content-item:hover + * + * {
-    filter: brightness(0.4);
-    transform: translateZ(50px) rotateY(20deg);
-}
-
-.content-list .content-item:hover + * + * + * {
-    filter: brightness(0.2);
-    transform: translateZ(10px) rotateY(10deg);
-}
-
-.content-list .content-item:has(+ *:hover) {
-    filter: brightness(0.6);
-    transform: translateZ(70px) rotateY(-40deg);
-}
-
-.content-list .content-item:has(+ * + *:hover) {
-    filter: brightness(0.4);
-    transform: translateZ(50px) rotateY(-20deg);
-}
-
-.content-list .content-item:has(+ * + * + *:hover) {
-    filter: brightness(0.2);
-    transform: translateZ(10px) rotateY(-10deg);
-}
-
-.blur-effect {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный цвет */
-    backdrop-filter: blur(10px); /* Эффект размытия */
-    z-index: 100;
-    transition: opacity .3s ease-in-out;
-}
-
-.close-card-button-wrapper {
-    position: absolute;
-    top: 5vh;
-    right: 5vh;
-    z-index: 110;
-    width: 70px;
-    aspect-ratio: 1;
-    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.close-card-button {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.close-card-button::before,
-.close-card-button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 24px;  /* Толщина и длина линий крестика */
-    height: 3px;  /* Толщина линий крестика */
-    background-color: #333;  /* Цвет линий крестика */
-    border-radius: 2px;  /* Закругление концов */
-    transform-origin: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.close-card-button::before {
-    transform: translate(-50%, -50%) rotate(45deg); /* Одна из диагональных линий */
-}
-
-.close-card-button::after {
-    transform: translate(-50%, -50%) rotate(-45deg); /* Другая диагональная линия */
-}
-
-/* Дополнительные эффекты при наведении */
-.close-card-button:hover::before,
-.close-card-button:hover::after {
-    background-color: #ff0000;  /* Изменение цвета на красный при наведении */
-    transform: translate(-50%, -50%) rotate(135deg); /* Вращение для более интересного эффекта */
-}
-
-.notebook-line-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 150;
-    transition: 1s;
-}
-
-.notebook-line {
-    width: 80%;
+/* Контейнер */
+main {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 105, 140, 0.2);
+    padding: 30px;
     max-width: 600px;
-    height: 100px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 10%, rgba(255, 0, 0, 0.5) 10%, rgba(255, 0, 0, 0.5) 90%, rgba(255, 255, 255, 0) 90%);
-    border: 1px solid #d3d3d3;
-    border-radius: 5px;
-    padding: 10px 20px;
-    position: relative;
-    background-color: #fffdf8;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
-    overflow: hidden;
+    width: 90%;
+    margin: 20px auto;
 }
 
-.notebook-line:hover {
+/* Заголовок */
+h1 {
+    color: #ff6b8b;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #ff6b8b, #ffb3c6);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Список фактов */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: #fff9f9;
+    margin: 15px 0;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(255, 107, 139, 0.1);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    border-left: 4px solid #ff6b8b;
+}
+
+li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 139, 0.2);
+    background-color: #fff5f5;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+li {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+li:nth-child(1) { animation-delay: 0.1s; }
+li:nth-child(2) { animation-delay: 0.2s; }
+li:nth-child(3) { animation-delay: 0.3s; }
+li:nth-child(4) { animation-delay: 0.4s; }
+li:nth-child(5) { animation-delay: 0.5s; }
+li:nth-child(6) { animation-delay: 0.6s; }
+li:nth-child(7) { animation-delay: 0.7s; }
+li:nth-child(8) { animation-delay: 0.8s; }
+li:nth-child(9) { animation-delay: 0.9s; }
+li:nth-child(10) { animation-delay: 1s; }
+
+/* Кнопка обновления (по желанию) */
+.refresh-btn {
+    background: linear-gradient(to right, #ff6b8b, #ff8e9e);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
     cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(255, 107, 139, 0.3);
+    transition: all 0.3s ease;
 }
 
-.notebook-line::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    width: calc(100% - 40px);
-    height: 1px;
-    background-color: #d3d3d3;
-    z-index: 1;
+.refresh-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 139, 0.4);
 }
 
-.notebook-text {
-    font-size: 24px;
-    font-weight: 400;
-    color: #333;
-    position: relative;
-    z-index: 2;
-    padding-left: 15px;
-    text-align: left;
-    line-height: 1.2;
-    font-family: 'Dancing Script', cursive; /* Добавляем романтичный шрифт */
-}
-
-.notebook-line::after {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #f26d7d; /* Розовый цвет для романтического акцента */
-    z-index: 2;
+.refresh-btn:active {
+    transform: translateY(1px);
 }
